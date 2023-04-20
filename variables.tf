@@ -16,3 +16,8 @@ variable "NEW_RELIC_CLOUDWATCH_ENDPOINT" {
   #default = "https://aws-api.newrelic.com/cloudwatch-metrics/v1" # US Datacenter
   default = "https://aws-api.eu01.nr-data.net/cloudwatch-metrics/v1" # EU Datacenter
 }
+
+variable "region" {
+  description = "Default Region"
+  default     = "eu-west-1"
+}
