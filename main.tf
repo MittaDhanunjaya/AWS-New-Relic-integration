@@ -5,6 +5,10 @@ terraform {
       source  = "newrelic/newrelic"
       version = "~> 3.20"  # Update this line
     }
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.0"
+    }
   }
 }
 
@@ -12,14 +16,7 @@ provider "newrelic" {
   region = "EU"                        # Valid regions are US and EU
 }
 
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 4.0"
-    }
-  }
-}
+
 provider "aws" {
   region = var.region
 }
