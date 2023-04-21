@@ -68,12 +68,6 @@ jobs:
       - name: Git checkout
         uses: actions/checkout@v3
 
-      - name: Setup New Relic Account ID
-        run: export NEW_RELIC_ACCOUNT_ID = ${{secrets.NEW_RELIC_ACCOUNT_ID}}
-
-      - name: Setup New Relic API Key
-        run: export NEW_RELIC_API_KEY = ${{secrets.NEW_RELIC_API_KEY}}
-
       - name: Configure AWS credentials from AWS account
         uses: aws-actions/configure-aws-credentials@v1
         with:

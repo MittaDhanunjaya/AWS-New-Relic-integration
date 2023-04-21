@@ -4,6 +4,7 @@ variable "aws_resource_prefix" {
 
 variable "NEW_RELIC_ACCOUNT_ID" {
   type = string
+  default = "3815665"
 }
 
 variable "NEW_RELIC_ACCOUNT_NAME" {

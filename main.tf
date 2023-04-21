@@ -14,6 +14,8 @@ terraform {
 
 provider "newrelic" {
   region = "EU"
+  account_id = "3815665"
+  api_key = "eu01xxb4dc71143d8169ad6c4d472a16FFFFNRAL"
   # Valid regions are US and EU
 }
 
