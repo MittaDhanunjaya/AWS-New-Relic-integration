@@ -9,7 +9,7 @@ variable "NEW_RELIC_ACCOUNT_ID" {
 }
 variable "NEW_RELIC_API_KEY"{
   type = string
-  default = "eu01xxb4dc71143d8169ad6c4d472a16FFFFNRAL"
+  default = "NRAK-UT9G7G3FEHQWFWYNNKGOSNM0D3A"
 }
 
 variable "NEW_RELIC_ACCOUNT_NAME" {
