@@ -6,6 +6,10 @@ variable "NEW_RELIC_ACCOUNT_ID" {
   type = string
   default = "3815665"
 }
+variable "NEW_RELIC_API_KEY"{
+  type = string
+  default = "eu01xxb4dc71143d8169ad6c4d472a16FFFFNRAL"
+}
 
 variable "NEW_RELIC_ACCOUNT_NAME" {
   description = "Account Name"
