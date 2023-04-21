@@ -1,6 +1,6 @@
 #IAM role for new relic
 resource "aws_iam_role" "newrelic_aws_role" {
-  name = "${var.aws_resource_prefix}-${data.newrelic_account.current.account_id}"
+  name = "NewRelicInfrastructure-Integrations"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
