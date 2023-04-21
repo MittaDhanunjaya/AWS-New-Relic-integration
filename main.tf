@@ -13,7 +13,8 @@ terraform {
 }
 
 provider "newrelic" {
-  region = "EU"                        # Valid regions are US and EU
+  region = "EU"
+  # Valid regions are US and EU
 }
 
 

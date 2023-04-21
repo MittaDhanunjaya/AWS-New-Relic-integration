@@ -21,3 +21,7 @@ variable "region" {
   description = "Default Region"
   default     = "eu-west-1"
 }
+
+variable "key"{
+  description = "New relic api key"
+}
