@@ -1,5 +1,6 @@
 variable "aws_resource_prefix" {
   description = "Prefix for the AWS Resources"
+  default = "eu"
 }
 
 variable "NEW_RELIC_ACCOUNT_ID" {
@@ -13,6 +14,7 @@ variable "NEW_RELIC_API_KEY"{
 
 variable "NEW_RELIC_ACCOUNT_NAME" {
   description = "Account Name"
+  default = "Account 3815665"
 }
 
 variable "NEW_RELIC_CLOUDWATCH_ENDPOINT" {
@@ -27,6 +29,3 @@ variable "region" {
   default     = "eu-west-1"
 }
 
-variable "key"{
-  description = "New relic api key"
-}
