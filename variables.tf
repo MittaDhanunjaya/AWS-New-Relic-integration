@@ -29,3 +29,16 @@ variable "region" {
   default     = "eu-west-1"
 }
 
+variable "create_role"{
+  description = "Creation of IAM role"
+  default = true
+}
+variable "create_role_fh"{
+  description = "Creation of IAM role for aws firehose"
+  default = true
+}
+variable "create_kinesis_firehose_ds"{
+  description = "Creation of kinesis firehose datastream"
+  default = true
+}
+

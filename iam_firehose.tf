@@ -1,5 +1,15 @@
+data "aws_iam_role" "firehose_newrelic_role"{
+  name = "firehose_newrelic_role"
+}
+output "role_exists_fh"{
+  value = data.aws_iam_role.firehose_newrelic_role.id != null
+}
+data "aws_iam_role" "metric_stream_to_firehose"{
+  name = "metric_stream_to_firehose_role"
+}
 resource "aws_iam_role" "firehose_newrelic_role" {
   name = "firehose_newrelic_role"
+  count = var.create_role_fh && !data.aws_iam_role.firehose_newrelic_role.id != null ? 1 : 0
 
   assume_role_policy = <<EOF
 {
@@ -17,8 +27,14 @@ resource "aws_iam_role" "firehose_newrelic_role" {
 }
 EOF
 }
+
+data "aws_kinesis_firehose_delivery_stream" "newrelic_firehost_stream"{
+  name = "newrelic_firehose_stream"
+}
+
 resource "aws_kinesis_firehose_delivery_stream" "newrelic_firehost_stream" {
   name        = "newrelic_firehose_stream"
+  count = var.create_kinesis_firehose_ds && !data.aws_kinesis_firehose_delivery_stream.newrelic_firehost_stream.id != null ? 1 : 0
   destination = "http_endpoint"
 
   s3_configuration {
@@ -46,6 +62,8 @@ resource "aws_kinesis_firehose_delivery_stream" "newrelic_firehost_stream" {
 
 resource "aws_iam_role" "metric_stream_to_firehose" {
   name = "metric_stream_to_firehose_role"
+  count = var.create_role && !data.aws_iam_role.metric_stream_to_firehose.id != null ? 1 : 0
+
 
   assume_role_policy = <<EOF
 {
