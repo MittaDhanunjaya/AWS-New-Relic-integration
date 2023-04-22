@@ -7,4 +7,14 @@ resource "newrelic_cloud_aws_integrations" "foo" {
   trusted_advisor {}
   vpc {}
   x_ray {}
+  alb{}
+  dynamo_db {}
+  ebs {}
+  ec2 {}
+  iam {}
+  lambda {}
+  rds {}
+  redshift {}
+  s3 {}
+  sns {}
 }
