@@ -84,7 +84,7 @@ EOF
 
 resource "aws_iam_role_policy" "metric_stream_to_firehose" {
   name = "default"
-  role = aws_iam_role.metric_stream_to_firehose.id
+  role = aws_iam_role.metric_stream_to_firehose[count.index].id
 
   policy = <<EOF
 {
@@ -96,7 +96,7 @@ resource "aws_iam_role_policy" "metric_stream_to_firehose" {
                 "firehose:PutRecord",
                 "firehose:PutRecordBatch"
             ],
-            "Resource": "${aws_kinesis_firehose_delivery_stream.newrelic_firehost_stream.arn}"
+            "Resource": "${aws_kinesis_firehose_delivery_stream.newrelic_firehost_stream[count.index].arn}"
         }
     ]
 }
