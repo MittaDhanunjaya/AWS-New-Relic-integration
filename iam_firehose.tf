@@ -18,7 +18,7 @@ resource "aws_iam_role" "firehose_newrelic_role" {
 EOF
 }
 resource "aws_kinesis_firehose_delivery_stream" "newrelic_firehost_stream" {
-  name        = "newrelic_firehost_stream"
+  name        = "newrelic_firehose_stream"
   destination = "http_endpoint"
 
   s3_configuration {
