@@ -5,10 +5,10 @@ output "role_exists"{
   value = data.aws_iam_role.newrelic_aws_role.id != null
 }
 resource "aws_iam_role" "newrelic_aws_role" {
+  count = var.create_role && !data.aws_iam_role.newrelic_aws_role.id != null ? 1 : 0
   name               = "NewRelicInfrastructure-Integrations"
   description        = "New Relic Cloud integration role"
   #only creates the role if it doesn't already exists
-  count = var.create_role && !data.aws_iam_role.newrelic_aws_role.id != null ? 1 : 0
   assume_role_policy = data.aws_iam_policy_document.newrelic_assume_policy.json
 }
 
@@ -53,8 +53,9 @@ EOF
 }
 
 resource "aws_iam_role_policy_attachment" "newrelic_aws_policy_attach" {
-  role       = aws_iam_role.newrelic_aws_role.name
+  count = data.aws_iam_role.newrelic_aws_role.id != null ? 1 : 0
+  role       = aws_iam_role.newrelic_aws_role[count.index].name
   policy_arn = aws_iam_policy.newrelic_aws_permissions.arn
   #only attach the policy if the role already exists
-  count = data.aws_iam_role.newrelic_aws_role.id != null ? 1 : 0
+
 }
