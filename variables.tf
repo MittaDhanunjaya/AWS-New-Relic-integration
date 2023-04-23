@@ -29,3 +29,6 @@ variable "region" {
   default     = "eu-west-1"
 }
 
+variable "cloudwatch_metric_stream_include_filter"{
+  default = ["AWS/EC2", "AWS/S3", "AWS/IAM", "AWS/SageMaker", "AWS/Redshift", "AWS/ALB", "AWS/DynamoDB"]
+}
