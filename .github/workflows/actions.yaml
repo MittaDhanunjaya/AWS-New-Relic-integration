@@ -106,7 +106,7 @@ jobs:
 
       - name: Terraform Plan
         id: plan
-        run: terraform plan -no-color -var-file=aws-new-relic.tfvars -out=${{ env.GITHUB_RUNNER_BASE_DIR }}/${{ matrix.tf-environment }}/${{ matrix.tf-environment }}/${{ env.TERRAFORM_ROOT_DIR }}/${{ matrix.tf-environment }}/plan.out
+        run: terraform plan -no-color -var-file=sample.tfvars -out=${{ env.GITHUB_RUNNER_BASE_DIR }}/${{ matrix.tf-environment }}/${{ matrix.tf-environment }}/${{ env.TERRAFORM_ROOT_DIR }}/${{ matrix.tf-environment }}/plan.out
         if: github.event_name == 'pull_request'
           #uses: dflook/terraform-plan@v1
           #with:
