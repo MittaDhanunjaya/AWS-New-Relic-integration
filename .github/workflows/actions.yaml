@@ -163,4 +163,6 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -auto-approve -input=false
+        run: |
+          cd ${{ env.GITHUB_RUNNER_BASE_DIR }}/${{ matrix.tf-environment }}/${{ matrix.tf-environment }}/${{ env.TERRAFORM_ROOT_DIR }}/${{ matrix.tf-environment }}
+          terraform apply -auto-approve -input=false
