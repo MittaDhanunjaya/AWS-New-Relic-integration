@@ -13,11 +13,11 @@ env:
   AWS_REGION: ${{ secrets.AWS_REGION }}
   PYTHON_VERSION: 3.7
   TF_VERSION: 1.2.5
-  DEPLOY_PROJECT: 'aws-new-relic'
+  DEPLOY_PROJECT: 'AWS-New-Relic-integration'
   TERRAFORM_ROOT_DIR: 'terraform/environments'
-  TF_BUCKET_BASE_NAME: 'aws-new-relic-terraform-backend'
-  TF_DYNAMO_BASE_NAME: 'aws-new-relic-tf-state-lock'
-  KEY_NAME: 'aws-new-relic.tfstate'
+  TF_BUCKET_BASE_NAME: 'aws-new-relic-integration-terraform-backend'
+  TF_DYNAMO_BASE_NAME: 'aws-new-relic-integration-tf-state-lock'
+  KEY_NAME: 'AWS-New-Relic-integration.tfstate'
 jobs:
   run-params:
     name: Prepare the Terraform Parameters and Actions
@@ -55,7 +55,7 @@ jobs:
           - name: 'dev'
             workspace: ${{needs.run-params.outputs.tf-feature-workspace}}
             extra: ${{needs.run-params.outputs.repo-name}}
-        tf-environment: ['sample']
+        tf-environment: ['AWS-New-Relic-integration']
     defaults:
       run:
         shell: bash
@@ -110,7 +110,7 @@ jobs:
         id: plan
         run: |
           cd ${{ env.GITHUB_RUNNER_BASE_DIR }}/${{ matrix.tf-environment }}/${{ matrix.tf-environment }}/${{ env.TERRAFORM_ROOT_DIR }}/${{ matrix.tf-environment }}
-          terraform plan -var-file=sample.tfvars -out=${{ env.GITHUB_RUNNER_BASE_DIR }}/${{ matrix.tf-environment }}/${{ matrix.tf-environment }}/${{ env.TERRAFORM_ROOT_DIR }}/${{ matrix.tf-environment }}/plan.out
+          terraform plan -var-file=AWS-New-Relic-integration.tfvars -out=${{ env.GITHUB_RUNNER_BASE_DIR }}/${{ matrix.tf-environment }}/${{ matrix.tf-environment }}/${{ env.TERRAFORM_ROOT_DIR }}/${{ matrix.tf-environment }}/plan.out
         if: github.event_name == 'pull_request'
           #uses: dflook/terraform-plan@v1
           #with:
